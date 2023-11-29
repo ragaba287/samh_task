@@ -1,6 +1,7 @@
 // ignore: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:samh_task/core/utils/app_local.dart';
 
 class MainDropDown extends StatefulWidget {
   const MainDropDown({
@@ -32,7 +33,7 @@ class _MainDropDownState extends State<MainDropDown> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.title.toUpperCase(),
+          widget.title.tr(context).toUpperCase(),
           style: TextStyle(
             color: Colors.black26,
             fontSize: 12.sp,

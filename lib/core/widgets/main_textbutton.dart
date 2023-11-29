@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:samh_task/core/utils/app_local.dart';
 
 enum ButtonLook { filled, border, text, disable }
 
@@ -65,7 +66,7 @@ class MainTextButton extends StatelessWidget {
                 if (icon != null) Icon(icon),
                 if (icon != null) SizedBox(width: 10.w),
                 Text(
-                  title,
+                  title.tr(context),
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: {

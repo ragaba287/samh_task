@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:samh_task/core/res/res_images.dart';
 import 'package:samh_task/core/utils/app_local.dart';
-import 'package:samh_task/cubit/home/home_cubit.dart';
-import 'package:samh_task/cubit/home/home_states.dart';
+
+import '../../../core/res/res_images.dart';
+import '../../../cubit/home/home_cubit.dart';
+import '../../../cubit/home/home_states.dart';
+import 'lang_changer.dart';
 
 class BookingAppBar extends StatelessWidget {
   const BookingAppBar({super.key});
@@ -19,17 +21,13 @@ class BookingAppBar extends StatelessWidget {
 
         return AppBar(
           title: Text('bookYourFlight'.tr(context)),
-          leading: IconButton(
-            icon: const Icon(Icons.format_list_bulleted, color: Colors.white),
-            onPressed: () => cubit.changeLang(context, 'en'),
+          leading: LangChangerButton(
+            onChange: (lang) => cubit.changeLang(context, lang),
           ),
           actions: [
             Padding(
               padding: EdgeInsetsDirectional.only(end: 20.w),
-              child: Image.asset(
-                ResImages.logoW,
-                width: 50,
-              ),
+              child: Image.asset(ResImages.logoW, width: 50),
             )
           ],
           bottom: PreferredSize(
@@ -51,7 +49,7 @@ class BookingAppBar extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.r),
                       ),
                       child: Text(
-                        'One Way',
+                        'oneWay'.tr(context),
                         style: TextStyle(
                           color: theme.colorScheme.primary,
                           fontWeight: FontWeight.w800,
@@ -70,7 +68,7 @@ class BookingAppBar extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.r),
                       ),
                       child: Text(
-                        'Roundtrip',
+                        'roundTrip'.tr(context),
                         style: TextStyle(
                           color: Colors.white60,
                           fontWeight: FontWeight.w800,
@@ -89,7 +87,7 @@ class BookingAppBar extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.r),
                       ),
                       child: Text(
-                        'Multi-City',
+                        'multiCity'.tr(context),
                         style: TextStyle(
                           color: Colors.white60,
                           fontWeight: FontWeight.w800,

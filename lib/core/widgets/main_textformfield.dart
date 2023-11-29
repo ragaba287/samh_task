@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:samh_task/core/utils/app_local.dart';
 
 class MainTextFormField extends StatelessWidget {
   const MainTextFormField({
@@ -30,7 +31,7 @@ class MainTextFormField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          lable.toUpperCase(),
+          lable.tr(context).toUpperCase(),
           style: TextStyle(
             color: Colors.black26,
             fontSize: 12.sp,
@@ -55,7 +56,7 @@ class MainTextFormField extends StatelessWidget {
 
           decoration: InputDecoration(
             prefixIconConstraints: BoxConstraints(minWidth: 50.w),
-            hintText: lable.toUpperCase(),
+            hintText: lable.tr(context).toUpperCase(),
             hintStyle: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,

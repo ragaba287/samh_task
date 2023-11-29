@@ -22,7 +22,7 @@ class BodyView extends StatelessWidget {
           SizedBox(height: 50.h),
           MainTextButton(
             onPressed: () {},
-            title: 'Search Flight',
+            title: 'searchFlight',
           ),
           const Spacer(),
           Align(
@@ -70,11 +70,11 @@ class TicketForm extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: MainTextFormField(lable: 'From', teController: teFrom),
+                child: MainTextFormField(lable: 'from', teController: teFrom),
               ),
               SizedBox(width: 40.w),
               Expanded(
-                child: MainTextFormField(lable: 'To', teController: teTo),
+                child: MainTextFormField(lable: 'to', teController: teTo),
               ),
             ],
           ),
@@ -174,7 +174,7 @@ class TicketForm extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.r),
                     ),
                     child: Text(
-                      'Economy'.toUpperCase(),
+                      'economy'.tr(context).toUpperCase(),
                       style: TextStyle(
                         height: 0,
                         fontSize: 10.sp,
@@ -202,7 +202,7 @@ class TicketForm extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.r),
                     ),
                     child: Text(
-                      'Business'.toUpperCase(),
+                      'business'.tr(context).toUpperCase(),
                       style: TextStyle(
                           height: 0, fontSize: 10.sp, color: Colors.white),
                     ),
@@ -226,7 +226,7 @@ class TicketForm extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.r),
                     ),
                     child: Text(
-                      'First Class'.toUpperCase(),
+                      'firstClass'.tr(context).toUpperCase(),
                       style: TextStyle(
                         height: 0,
                         fontSize: 10.sp,

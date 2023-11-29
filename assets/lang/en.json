@@ -8,8 +8,9 @@
   "departure": "Departure",
   "adults": "Adults",
   "children": "Children",
-  "cconomy": "Economy",
+  "economy": "Economy",
   "business": "Business",
   "firstClass": "First Class",
+  "searchFlight": "Search Flight",
   "bestOffers": "Best Value Offers\nto Asia!"
 }
