@@ -29,7 +29,7 @@ class BodyView extends StatelessWidget {
           BlocConsumer<HomeCubit, HomeStates>(
             listener: (context, state) {},
             builder: (context, state) {
-              HomeCubit cubit = HomeCubit.get(context);
+              // HomeCubit cubit = HomeCubit.get(context);
 
               return MainTextButton(
                 onPressed: () {
@@ -44,9 +44,7 @@ class BodyView extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               'bestOffers'.tr(context),
-              style: TextStyle(
-                fontSize: 32.sp,
-              ),
+              style: TextStyle(fontSize: 32.sp),
             ),
           ),
           SizedBox(height: 30.h),

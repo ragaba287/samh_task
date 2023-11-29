@@ -1,4 +1,5 @@
 {
+  "Comment 1": "==================== Booking Screen ===============",
   "bookYourFlight": "احجز رحلتك",
   "oneWay": "ذهاب فقط",
   "roundTrip": "ذهاب وعودة",
@@ -12,5 +13,11 @@
   "business": "الاعمال",
   "firstClass": "الدرجة الاولي",
   "searchFlight": "البحث عن الرحلة",
-  "bestOffers": "أفضل العروض القيمة الي آسيا!"
+  "bestOffers": "أفضل العروض القيمة الي آسيا!",
+
+  "Comment 2": "==================== Search Screen ================",
+  "searchResults": "نتائج البحث",
+  "avaFlights": "رحلة متاحة",
+  "stop": "توقف",
+  "bookFlight": "احجز الرحلة"
 }

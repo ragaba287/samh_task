@@ -1,4 +1,5 @@
 {
+  "Comment 1": "==================== Booking Screen ===============",
   "bookYourFlight": "Book Your Flight",
   "oneWay": "One Way",
   "roundTrip": "Roundtrip",
@@ -12,5 +13,11 @@
   "business": "Business",
   "firstClass": "First Class",
   "searchFlight": "Search Flight",
-  "bestOffers": "Best Value Offers\nto Asia!"
+  "bestOffers": "Best Value Offers\nto Asia!",
+
+  "Comment 2": "==================== Search Screen ================",
+  "searchResults": "Search Results",
+  "avaFlights": "Available Flight",
+  "stop": "Stop",
+  "bookFlight": "Book Flight"
 }
