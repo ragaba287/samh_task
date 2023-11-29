@@ -1,38 +1,160 @@
 {
-  "flights": [
+  "RUH/JED": [
     {
       "departure": {
-        "airportCode": "ALY",
-        "airportName": "Alexandria",
+        "airportCode": "RUH",
+        "airportName": "riyadh",
         "terminal": "1",
-        "time": "12:23"
+        "time": "05:00"
       },
       "arrival": {
-        "airportCode": "ASW",
-        "airportName": "Aswan",
+        "airportCode": "JED",
+        "airportName": "jeddah",
         "terminal": "2",
-        "time": "14:45"
+        "time": "06:55"
       },
       "date": "01/12/2023",
       "stops": 0,
-      "price": 50
+      "price": 78
     },
     {
       "departure": {
-        "airportCode": "ALY",
-        "airportName": "Alexandria",
+        "airportCode": "RUH",
+        "airportName": "riyadh",
         "terminal": "1",
-        "time": "19:23"
+        "time": "07:00"
       },
       "arrival": {
-        "airportCode": "ASW",
-        "airportName": "Aswan",
+        "airportCode": "JED",
+        "airportName": "jeddah",
         "terminal": "2",
-        "time": "21:30"
+        "time": "08:35"
       },
       "date": "01/12/2023",
       "stops": 0,
-      "price": 50
+      "price": 296
+    },
+    {
+      "departure": {
+        "airportCode": "RUH",
+        "airportName": "riyadh",
+        "terminal": "1",
+        "time": "11:00"
+      },
+      "arrival": {
+        "airportCode": "JED",
+        "airportName": "jeddah",
+        "terminal": "2",
+        "time": "12:55"
+      },
+      "date": "01/12/2023",
+      "stops": 0,
+      "price": 370
+    },
+    {
+      "departure": {
+        "airportCode": "RUH",
+        "airportName": "riyadh",
+        "terminal": "1",
+        "time": "14:50"
+      },
+      "arrival": {
+        "airportCode": "JED",
+        "airportName": "jeddah",
+        "terminal": "2",
+        "time": "16:55"
+      },
+      "date": "01/12/2023",
+      "stops": 0,
+      "price": 74
+    },
+
+    {
+      "departure": {
+        "airportCode": "RUH",
+        "airportName": "riyadh",
+        "terminal": "1",
+        "time": "11:00"
+      },
+      "arrival": {
+        "airportCode": "JED",
+        "airportName": "jeddah",
+        "terminal": "2",
+        "time": "12:55"
+      },
+      "date": "02/12/2023",
+      "stops": 0,
+      "price": 370
+    },
+    {
+      "departure": {
+        "airportCode": "RUH",
+        "airportName": "riyadh",
+        "terminal": "1",
+        "time": "14:50"
+      },
+      "arrival": {
+        "airportCode": "JED",
+        "airportName": "jeddah",
+        "terminal": "2",
+        "time": "16:55"
+      },
+      "date": "02/12/2023",
+      "stops": 0,
+      "price": 74
+    }
+  ],
+  "RUH/DMM": [
+    {
+      "departure": {
+        "airportCode": "RUH",
+        "airportName": "riyadh",
+        "terminal": "1",
+        "time": "01:00"
+      },
+      "arrival": {
+        "airportCode": "DMM",
+        "airportName": "dammam",
+        "terminal": "2",
+        "time": "02:10"
+      },
+      "date": "01/12/2023",
+      "stops": 0,
+      "price": 296
+    },
+    {
+      "departure": {
+        "airportCode": "RUH",
+        "airportName": "riyadh",
+        "terminal": "1",
+        "time": "05:20"
+      },
+      "arrival": {
+        "airportCode": "DMM",
+        "airportName": "dammam",
+        "terminal": "2",
+        "time": "06:25"
+      },
+      "date": "01/12/2023",
+      "stops": 0,
+      "price": 60
+    },
+    {
+      "departure": {
+        "airportCode": "RUH",
+        "airportName": "riyadh",
+        "terminal": "1",
+        "time": "21:40"
+      },
+      "arrival": {
+        "airportCode": "DMM",
+        "airportName": "dammam",
+        "terminal": "2",
+        "time": "22:50"
+      },
+      "date": "01/12/2023",
+      "stops": 0,
+      "price": 80
     }
   ]
 }
