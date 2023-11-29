@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:samh_task/core/utils/app_local.dart';
+import 'package:samh_task/core/utils/router.dart';
 
 import '../../../core/utils/funs.dart';
 import '../../../core/widgets/main_drowdown.dart';
@@ -11,6 +12,7 @@ import '../../../core/widgets/main_textbutton.dart';
 import '../../../core/widgets/main_textformfield.dart';
 import '../../../cubit/home/home_cubit.dart';
 import '../../../cubit/home/home_states.dart';
+import '../../result/screens/result_screen.dart';
 import 'body_classoption_row.dart';
 
 class BodyView extends StatelessWidget {
@@ -24,9 +26,18 @@ class BodyView extends StatelessWidget {
         children: [
           const TicketForm(),
           SizedBox(height: 50.h),
-          MainTextButton(
-            onPressed: () {},
-            title: 'searchFlight',
+          BlocConsumer<HomeCubit, HomeStates>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              HomeCubit cubit = HomeCubit.get(context);
+
+              return MainTextButton(
+                onPressed: () {
+                  RouterNavigator.navigateTo(const ResultsScreen());
+                },
+                title: 'searchFlight',
+              );
+            },
           ),
           const Spacer(),
           Align(

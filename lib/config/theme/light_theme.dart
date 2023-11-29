@@ -35,7 +35,7 @@ ThemeData lightTheme() => ThemeData(
           statusBarIconBrightness: Brightness.light,
           statusBarBrightness: Brightness.dark,
         ),
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleTextStyle: TextStyle(
           fontFamily: lang == 'ar' ? 'ElMessiri' : 'Poppins',
           fontSize: 18.sp,
