@@ -19,5 +19,7 @@
   "searchResults": "Search Results",
   "avaFlights": "Available Flight",
   "stop": "Stop",
-  "bookFlight": "Book Flight"
+  "bookFlight": "Book Flight",
+  "hour": "hr",
+  "minutes": "min"
 }

@@ -12,6 +12,7 @@ class MainTextFormField extends StatelessWidget {
     this.textInputAction,
     this.enabled = true,
     this.integer = false,
+    this.toCap = false,
     Key? key,
   }) : super(key: key);
 
@@ -22,6 +23,7 @@ class MainTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool enabled;
   final bool integer;
+  final bool toCap;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,8 @@ class MainTextFormField extends StatelessWidget {
           maxLines: 1,
           validator: (value) => validator!(value!),
           keyboardType: keyboardType,
+          textCapitalization: TextCapitalization.characters,
+
           inputFormatters: <TextInputFormatter>[
             if (keyboardType == TextInputType.number && integer)
               FilteringTextInputFormatter.digitsOnly

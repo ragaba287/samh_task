@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:samh_task/core/utils/app_local.dart';
+import 'package:samh_task/models/flight_model.dart';
 
 import '../../../core/utils/router.dart';
+import '../../../cubit/home/home_cubit.dart';
+import '../../../cubit/home/home_states.dart';
 import 'line_plane.dart';
 
 class ResultsAppBar extends StatelessWidget {
@@ -20,37 +24,44 @@ class ResultsAppBar extends StatelessWidget {
         preferredSize: Size(0, 0.h),
         child: Padding(
           padding: EdgeInsets.fromLTRB(30.w, 10.h, 30.w, 20.h),
-          child: Row(
-            children: [
-              const DestionationColumn(
-                airPort: 'Ahmedskdls',
-                airPortChar: 'amd',
-                des: 'oneWay',
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: BlocConsumer<HomeCubit, HomeStates>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                HomeCubit cubit = HomeCubit.get(context);
+                FlightModel flightModel = cubit.flightList.first;
+
+                return Row(
                   children: [
-                    const LinePlane(),
-                    SizedBox(height: 15.h),
-                    Text(
-                      '23 July 2028',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 10.sp,
+                    DestionationColumn(
+                      airPort: flightModel.departure?.airportName ?? '',
+                      airPortChar: flightModel.departure?.airportCode ?? '',
+                      des: 'oneWay',
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const LinePlane(),
+                          SizedBox(height: 15.h),
+                          Text(
+                            flightModel.date ?? '',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 10.sp,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    DestionationColumn(
+                      airPort: flightModel.arrival?.airportName ?? '',
+                      airPortChar: flightModel.arrival?.airportCode ?? '',
+                      des: 'business',
+                    ),
                   ],
-                ),
-              ),
-              const DestionationColumn(
-                airPort: 'Hypnner',
-                airPortChar: 'HBD',
-                des: 'business',
-              ),
-            ],
-          ),
+                );
+              }),
         ),
       ),
     );

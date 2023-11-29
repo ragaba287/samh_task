@@ -19,5 +19,7 @@
   "searchResults": "نتائج البحث",
   "avaFlights": "رحلة متاحة",
   "stop": "توقف",
-  "bookFlight": "احجز الرحلة"
+  "bookFlight": "احجز الرحلة",
+  "hour": "ساعة",
+  "minutes": "دقيقة"
 }

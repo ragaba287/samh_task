@@ -7,6 +7,7 @@ import 'package:samh_task/core/utils/app_local.dart';
 import 'package:samh_task/core/utils/router.dart';
 
 import '../../../core/utils/funs.dart';
+import '../../../core/widgets/custom_snackbar.dart';
 import '../../../core/widgets/main_drowdown.dart';
 import '../../../core/widgets/main_textbutton.dart';
 import '../../../core/widgets/main_textformfield.dart';
@@ -25,20 +26,6 @@ class BodyView extends StatelessWidget {
       child: Column(
         children: [
           const TicketForm(),
-          SizedBox(height: 50.h),
-          BlocConsumer<HomeCubit, HomeStates>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              // HomeCubit cubit = HomeCubit.get(context);
-
-              return MainTextButton(
-                onPressed: () {
-                  RouterNavigator.navigateTo(const ResultsScreen());
-                },
-                title: 'searchFlight',
-              );
-            },
-          ),
           const Spacer(),
           Align(
             alignment: Alignment.centerLeft,
@@ -59,34 +46,64 @@ class TicketForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
-      decoration: BoxDecoration(
-        border: const DashedBorder.fromBorderSide(
-          dashLength: 4,
-          side: BorderSide(color: Colors.black26, width: 2),
+    return BlocConsumer<HomeCubit, HomeStates>(listener: (context, state) {
+      if (state is FlightSearchSuccessState) {
+        RouterNavigator.navigateTo(const ResultsScreen());
+      } else if (state is FlightSearchErrorState) {
+        showCustomSnackBar('Something Went wrong', context);
+      } else if (state is FlightEmptySuccessState) {
+        showCustomSnackBar('No Ava Flights', context, isError: false);
+      }
+    }, builder: (context, state) {
+      HomeCubit cubit = HomeCubit.get(context);
+      final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+      return Form(
+        key: formKey,
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
+              decoration: BoxDecoration(
+                border: const DashedBorder.fromBorderSide(
+                  dashLength: 4,
+                  side: BorderSide(color: Colors.black26, width: 2),
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(15.r)),
+              ),
+              child: Column(
+                children: [
+                  /// ================== Destionation =============== ///
+                  const DestionationRow(),
+                  SizedBox(height: 30.h),
+
+                  /// ================== Date of departure =============== ///
+                  const DepartureDate(),
+                  SizedBox(height: 30.h),
+
+                  /// ================== Number of Passengers =============== ///
+                  const PassengersNum(),
+                  SizedBox(height: 30.h),
+
+                  /// ================== Ticket class =============== ///
+                  const TicketClassRow(),
+                ],
+              ),
+            ),
+            SizedBox(height: 50.h),
+            MainTextButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  cubit.searchFlights();
+                }
+              },
+              title: 'searchFlight',
+              isLoading: state is FlightSearchLoadingState,
+            )
+          ],
         ),
-        borderRadius: BorderRadius.all(Radius.circular(15.r)),
-      ),
-      child: Column(
-        children: [
-          /// ================== Destionation =============== ///
-          const DestionationRow(),
-          SizedBox(height: 30.h),
-
-          /// ================== Date of departure =============== ///
-          const DepartureDate(),
-          SizedBox(height: 30.h),
-
-          /// ================== Number of Passengers =============== ///
-          const PassengersNum(),
-          SizedBox(height: 30.h),
-
-          /// ================== Ticket class =============== ///
-          const TicketClassRow(),
-        ],
-      ),
-    );
+      );
+    });
   }
 }
 
@@ -104,11 +121,24 @@ class DestionationRow extends StatelessWidget {
             children: [
               Expanded(
                 child: MainTextFormField(
-                    lable: 'from', teController: cubit.teFrom),
+                  lable: 'from',
+                  toCap: true,
+                  teController: cubit.teFrom,
+                  validator: (value) {
+                    if (value.isEmpty) return 'Enter An Airport';
+                  },
+                ),
               ),
               SizedBox(width: 40.w),
               Expanded(
-                child: MainTextFormField(lable: 'to', teController: cubit.teTo),
+                child: MainTextFormField(
+                  lable: 'to',
+                  toCap: true,
+                  teController: cubit.teTo,
+                  validator: (value) {
+                    if (value.isEmpty) return 'Enter An Airport';
+                  },
+                ),
               ),
             ],
           );
@@ -148,6 +178,7 @@ class DepartureDate extends StatelessWidget {
                     lable: 'departure',
                     enabled: false,
                     teController: cubit.teTime,
+                    validator: (value) {},
                   ),
                 ),
               ),

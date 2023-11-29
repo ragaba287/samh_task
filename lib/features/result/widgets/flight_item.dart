@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:samh_task/core/utils/app_local.dart';
 
+import '../../../models/flight_model.dart';
 import 'line_plane.dart';
 
 class FlightItem extends StatelessWidget {
-  const FlightItem({super.key});
+  const FlightItem({super.key, required this.flightModel});
+  final FlightModel flightModel;
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    var format = DateFormat("HH:mm");
+    var one = format.parse(flightModel.departure?.time ?? '00:00');
+    var two = format.parse(flightModel.arrival?.time ?? '00:00');
+    var diff = two.difference(one);
 
     return Stack(
       clipBehavior: Clip.none,
@@ -38,15 +45,14 @@ class FlightItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '2hr 15min',
+                    '${diff.inHours} ${'hour'.tr(context)} ${diff.inMinutes.remainder(60).abs()} ${'minutes'.tr(context)}',
                     style: TextStyle(
-                      fontFamily: 'Poppins',
                       color: theme.colorScheme.primary,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
-                    '0 ${'stop'.tr(context)}',
+                    '${flightModel.stops} ${'stop'.tr(context)}',
                     style: const TextStyle(
                       color: Colors.black45,
                       fontWeight: FontWeight.w600,
@@ -58,7 +64,7 @@ class FlightItem extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '12:15',
+                    flightModel.departure?.time ?? '00:00',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: theme.colorScheme.primary,
@@ -68,7 +74,7 @@ class FlightItem extends StatelessWidget {
                   ),
                   Expanded(child: LinePlane(color: theme.colorScheme.primary)),
                   Text(
-                    '14:30',
+                    flightModel.arrival?.time ?? '00:00',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: theme.colorScheme.primary,
@@ -106,9 +112,9 @@ class FlightItem extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 3.w),
-                  const Text(
-                    '\$58',
-                    style: TextStyle(
+                  Text(
+                    '\$${flightModel.price}',
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Poppins',
                       color: Colors.white,
