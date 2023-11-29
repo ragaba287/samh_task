@@ -6,7 +6,8 @@ import 'package:samh_task/core/utils/app_local.dart';
 import '../../../core/res/res_images.dart';
 import '../../../cubit/home/home_cubit.dart';
 import '../../../cubit/home/home_states.dart';
-import 'lang_changer.dart';
+import 'appbar_lang_changer.dart';
+import 'appbar_tripoption_row.dart';
 
 class BookingAppBar extends StatelessWidget {
   const BookingAppBar({super.key});
@@ -17,7 +18,6 @@ class BookingAppBar extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         HomeCubit cubit = HomeCubit.get(context);
-        ThemeData theme = Theme.of(context);
 
         return AppBar(
           title: Text('bookYourFlight'.tr(context)),
@@ -30,75 +30,11 @@ class BookingAppBar extends StatelessWidget {
               child: Image.asset(ResImages.logoW, width: 50),
             )
           ],
+
+          ///================== Trip Option Row ============///
           bottom: PreferredSize(
             preferredSize: Size(0, 0.h),
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 15.h),
-              //TODO TO BE FIXED
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(30.r),
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      child: Text(
-                        'oneWay'.tr(context),
-                        style: TextStyle(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 10.sp,
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(30.r),
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      child: Text(
-                        'roundTrip'.tr(context),
-                        style: TextStyle(
-                          color: Colors.white60,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 10.sp,
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(30.r),
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      child: Text(
-                        'multiCity'.tr(context),
-                        style: TextStyle(
-                          color: Colors.white60,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 10.sp,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: const TripOptionRow(),
           ),
         );
       },

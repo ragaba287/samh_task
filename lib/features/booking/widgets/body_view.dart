@@ -1,13 +1,17 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:samh_task/core/utils/app_local.dart';
-import 'package:samh_task/core/utils/funs.dart';
-import 'package:samh_task/core/widgets/main_drowdown.dart';
-import 'package:samh_task/core/widgets/main_textformfield.dart';
 
+import '../../../core/utils/funs.dart';
+import '../../../core/widgets/main_drowdown.dart';
 import '../../../core/widgets/main_textbutton.dart';
+import '../../../core/widgets/main_textformfield.dart';
+import '../../../cubit/home/home_cubit.dart';
+import '../../../cubit/home/home_states.dart';
+import 'body_classoption_row.dart';
 
 class BodyView extends StatelessWidget {
   const BodyView({super.key});
@@ -46,15 +50,6 @@ class TicketForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String adults = '1';
-    String children = '0';
-    DateTime departure = DateTime.now();
-    TextEditingController teFrom = TextEditingController();
-    TextEditingController teTo = TextEditingController();
-    TextEditingController teTime =
-        TextEditingController(text: formatDate(departure));
-    ThemeData theme = Theme.of(context);
-
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
       decoration: BoxDecoration(
@@ -67,21 +62,62 @@ class TicketForm extends StatelessWidget {
       child: Column(
         children: [
           /// ================== Destionation =============== ///
-          Row(
-            children: [
-              Expanded(
-                child: MainTextFormField(lable: 'from', teController: teFrom),
-              ),
-              SizedBox(width: 40.w),
-              Expanded(
-                child: MainTextFormField(lable: 'to', teController: teTo),
-              ),
-            ],
-          ),
+          const DestionationRow(),
           SizedBox(height: 30.h),
 
           /// ================== Date of departure =============== ///
-          Row(
+          const DepartureDate(),
+          SizedBox(height: 30.h),
+
+          /// ================== Number of Passengers =============== ///
+          const PassengersNum(),
+          SizedBox(height: 30.h),
+
+          /// ================== Ticket class =============== ///
+          const TicketClassRow(),
+        ],
+      ),
+    );
+  }
+}
+
+class DestionationRow extends StatelessWidget {
+  const DestionationRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<HomeCubit, HomeStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          HomeCubit cubit = HomeCubit.get(context);
+
+          return Row(
+            children: [
+              Expanded(
+                child: MainTextFormField(
+                    lable: 'from', teController: cubit.teFrom),
+              ),
+              SizedBox(width: 40.w),
+              Expanded(
+                child: MainTextFormField(lable: 'to', teController: cubit.teTo),
+              ),
+            ],
+          );
+        });
+  }
+}
+
+class DepartureDate extends StatelessWidget {
+  const DepartureDate({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<HomeCubit, HomeStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          HomeCubit cubit = HomeCubit.get(context);
+
+          return Row(
             children: [
               Expanded(
                 child: InkWell(
@@ -93,25 +129,36 @@ class TicketForm extends StatelessWidget {
                       value: [DateTime.now()],
                       borderRadius: BorderRadius.circular(15),
                     ).then((value) {
-                      departure = value?.first ?? DateTime.now();
-                      teTime.text = formatDate(departure);
+                      cubit.departure = value?.first ?? DateTime.now();
+                      cubit.teTime.text = formatDate(cubit.departure);
                     });
                   },
                   child: MainTextFormField(
                     lable: 'departure',
                     enabled: false,
-                    teController: teTime,
+                    teController: cubit.teTime,
                   ),
                 ),
               ),
               SizedBox(width: 40.w),
               const Spacer(),
             ],
-          ),
-          SizedBox(height: 30.h),
+          );
+        });
+  }
+}
 
-          /// ================== Number of Passengers =============== ///
-          Row(
+class PassengersNum extends StatelessWidget {
+  const PassengersNum({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<HomeCubit, HomeStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          HomeCubit cubit = HomeCubit.get(context);
+
+          return Row(
             children: [
               Expanded(
                 child: MainDropDown(
@@ -127,7 +174,7 @@ class TicketForm extends StatelessWidget {
                     '8',
                     '9',
                   ],
-                  onChange: (val) => adults = val,
+                  onChange: (val) => cubit.adults = val,
                 ),
               ),
               SizedBox(width: 80.w),
@@ -146,100 +193,12 @@ class TicketForm extends StatelessWidget {
                     '8',
                     '9'
                   ],
-                  onChange: (val) => children = val,
+                  onChange: (val) => cubit.children = val,
                 ),
               ),
               SizedBox(width: 40.w),
             ],
-          ),
-          SizedBox(height: 30.h),
-
-          /// ================== Ticket class =============== ///
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(10.r),
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: theme.colorScheme.primary,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Text(
-                      'economy'.tr(context).toUpperCase(),
-                      style: TextStyle(
-                        height: 0,
-                        fontSize: 10.sp,
-                        color: theme.colorScheme.primary,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(width: 10.w),
-              Expanded(
-                child: InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(10.r),
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.primary,
-                      border: Border.all(
-                        color: theme.colorScheme.primary,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Text(
-                      'business'.tr(context).toUpperCase(),
-                      style: TextStyle(
-                          height: 0, fontSize: 10.sp, color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(width: 10.w),
-              Expanded(
-                child: InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(10.r),
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: theme.colorScheme.primary,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Text(
-                      'firstClass'.tr(context).toUpperCase(),
-                      style: TextStyle(
-                        height: 0,
-                        fontSize: 10.sp,
-                        color: theme.colorScheme.primary,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+          );
+        });
   }
 }
