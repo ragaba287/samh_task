@@ -1,0 +1,38 @@
+{
+  "flights": [
+    {
+      "departure": {
+        "airportCode": "ALY",
+        "airportName": "Alexandria",
+        "terminal": "1",
+        "time": "12:23"
+      },
+      "arrival": {
+        "airportCode": "ASW",
+        "airportName": "Aswan",
+        "terminal": "2",
+        "time": "14:45"
+      },
+      "date": "01/12/2023",
+      "stops": 0,
+      "price": 50
+    },
+    {
+      "departure": {
+        "airportCode": "ALY",
+        "airportName": "Alexandria",
+        "terminal": "1",
+        "time": "19:23"
+      },
+      "arrival": {
+        "airportCode": "ASW",
+        "airportName": "Aswan",
+        "terminal": "2",
+        "time": "21:30"
+      },
+      "date": "01/12/2023",
+      "stops": 0,
+      "price": 50
+    }
+  ]
+}

@@ -133,7 +133,9 @@ class DepartureDate extends StatelessWidget {
                   onTap: () async {
                     await showCalendarDatePicker2Dialog(
                       context: context,
-                      config: CalendarDatePicker2WithActionButtonsConfig(),
+                      config: CalendarDatePicker2WithActionButtonsConfig(
+                        firstDate: DateTime.now(),
+                      ),
                       dialogSize: const Size(325, 400),
                       value: [DateTime.now()],
                       borderRadius: BorderRadius.circular(15),
