@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/const/const.dart';
-import '../../core/res/res_api_names.dart';
 import '../../core/utils/dio_helper.dart';
 import '../../core/utils/funs.dart';
 import '../../core/utils/sharedpreference.dart';

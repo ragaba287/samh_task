@@ -14,6 +14,9 @@
   "firstClass": "First Class",
   "searchFlight": "Search Flight",
   "bestOffers": "Best Value Offers\nto Asia!",
+  "somethingWentWrong": "Something Went Wrong",
+  "noAvaFlights": "No Available Flight",
+  "enterAirport": "Enter An Airport",
 
   "Comment 2": "==================== Search Screen ================",
   "searchResults": "Search Results",

@@ -50,9 +50,9 @@ class TicketForm extends StatelessWidget {
       if (state is FlightSearchSuccessState) {
         RouterNavigator.navigateTo(const ResultsScreen());
       } else if (state is FlightSearchErrorState) {
-        showCustomSnackBar('Something Went wrong', context);
+        showCustomSnackBar('somethingWentWrong'.tr(context), context);
       } else if (state is FlightEmptySuccessState) {
-        showCustomSnackBar('No Ava Flights', context, isError: false);
+        showCustomSnackBar('noAvaFlights'.tr(context), context, isError: false);
       }
     }, builder: (context, state) {
       HomeCubit cubit = HomeCubit.get(context);
@@ -125,7 +125,7 @@ class DestionationRow extends StatelessWidget {
                   toCap: true,
                   teController: cubit.teFrom,
                   validator: (value) {
-                    if (value.isEmpty) return 'Enter An Airport';
+                    if (value.isEmpty) return 'enterAirport'.tr(context);
                   },
                 ),
               ),
@@ -136,7 +136,7 @@ class DestionationRow extends StatelessWidget {
                   toCap: true,
                   teController: cubit.teTo,
                   validator: (value) {
-                    if (value.isEmpty) return 'Enter An Airport';
+                    if (value.isEmpty) return 'enterAirport'.tr(context);
                   },
                 ),
               ),
