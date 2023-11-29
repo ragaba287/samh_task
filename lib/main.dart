@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:month_year_picker/month_year_picker.dart';
 
 import 'config/theme/dark_theme.dart';
 import 'config/theme/light_theme.dart';
@@ -63,7 +62,6 @@ class _MainAppState extends State<MainApp> {
                     GlobalMaterialLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,
-                    MonthYearPickerLocalizations.delegate,
                   ],
                   localeResolutionCallback: (deviceLocale, supportedLocales) {
                     for (var locale in supportedLocales) {

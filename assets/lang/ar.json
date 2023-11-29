@@ -1,1 +1,15 @@
-{}
+{
+  "bookYourFlight": "احجز رحلتك",
+  "oneWay": "ذهاب فقط",
+  "roundTrip": "ذهاب وعودة",
+  "multiCity": "متعدد",
+  "from": "من",
+  "to": "الي",
+  "departure": "الواجهة",
+  "adults": "بالغ",
+  "children": "طفل",
+  "economy": "اقتصادي",
+  "business": "الاعمال",
+  "firstClass": "الدرجة الاولي",
+  "bestOffers": "أفضل العروض القيمة الي آسيا!"
+}

@@ -39,6 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             '$appName @ Copyrights',
             textAlign: TextAlign.center,
             style: TextStyle(
+              fontFamily: 'Poppins',
               fontSize: 14.sp,
               fontWeight: FontWeight.w800,
               color: const Color(0xff1f1f99),

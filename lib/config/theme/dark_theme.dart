@@ -23,7 +23,7 @@ ThemeData darkTheme() => ThemeData(
       ),
       drawerTheme: const DrawerThemeData(backgroundColor: Color(0xff0F1015)),
       appBarTheme: AppBarTheme(
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xff1f1f99),
         elevation: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
